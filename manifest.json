@@ -1,0 +1,15 @@
+{
+    "name": "chrome extension poc",
+    "version": "0.1.0",
+    "description": "messing around with chrome extensions",
+    "permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
+    "background": {
+        "scripts": ["background.js"],
+        "permissions": false
+    },
+    "options_page": "options.html",
+    "page_action": {
+        "default_popup": "popup.html"
+    },
+    "manifest_version": 2
+}
