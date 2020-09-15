@@ -5,6 +5,23 @@ let tabIndex = document.getElementById("tabIndex")
 let windowCount = document.getElementById("windowCount")
 let tabCount = document.getElementById("tabCount")
 
+let searchText = document.getElementById("searchText")
+console.log("searchText = " + searchText)
+
+let tabData = []
+
+searchText.addEventListener("keyup", function(ev) {
+    console.log("key pressed: " + ev.key)
+    console.log("input value: " + searchText.value)
+    let searchString = searchText.value.toLowerCase()
+    for (i = 0; i < tabData.length; i++) {
+        if (tabData[i].searchText.includes(searchString)) {
+            console.log("  found title: " + tabData[i].title)
+        }
+
+    }
+})
+
 window.onload = function() {
     console.log("onload " + Date())
     let windowsTotal = 0
@@ -30,20 +47,30 @@ window.onload = function() {
         windowsTotal = windowIDs.length
         windowCount.innerText = windowsTotal
         console.log(windowIDs)
-        let firstID = windowIDs[0]
-        chrome.tabs.query({windowId: firstID}, function(tabs) {
-            console.log(tabs)
-            let tabIDs = []
-            for (const v of Object.values(tabs)) {
-                tabIDs.push(v.id)
-                console.log("title: " + v.title)
-                console.log("  url: " + v.url)
-                console.log("favIconUrl: " + v.favIconUrl)
-            }
-            tabsTotal += tabIDs.length
-            tabCount.innerText = tabsTotal
-            console.log(tabIDs)
-        })
+        tabData = []
+        for (let i = 0; i < windowIDs.length; i++) {
+            chrome.tabs.query({windowId: windowIDs[i]}, function(tabs) {
+                console.log(tabs)
+                // let tabIDs = []
+                for (const v of Object.values(tabs)) {
+                    // tabIDs.push(v.id)
+                    console.log("title: " + v.title)
+                    console.log("  url: " + v.url)
+                    console.log("favIconUrl: " + v.favIconUrl)
+                    tabData.push({
+                        windowId: v.winowId,
+                        tabId: v.id,
+                        title: v.title,
+                        url: v.url,
+                        favIconUrl: v.favIconUrl,
+                        searchText: v.title.toLowerCase() + "||" + v.url.toLowerCase(),
+                    })
+                }
+                tabsTotal += tabs.length
+                tabCount.innerText = tabsTotal
+                // console.log(tabIDs)
+            })
+        }
     })
 }
 
