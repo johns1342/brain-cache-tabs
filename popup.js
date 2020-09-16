@@ -5,6 +5,8 @@ let tabIndex = document.getElementById("tabIndex")
 let windowCount = document.getElementById("windowCount")
 let tabCount = document.getElementById("tabCount")
 
+let resultsDiv = document.getElementById("resultsDiv")
+
 let searchText = document.getElementById("searchText")
 console.log("searchText = " + searchText)
 
@@ -14,9 +16,16 @@ searchText.addEventListener("keyup", function(ev) {
     console.log("key pressed: " + ev.key)
     console.log("input value: " + searchText.value)
     let searchString = searchText.value.toLowerCase()
+    let child
+    while (child = resultsDiv.lastChild) {
+        resultsDiv.removeChild(child)
+    }
     for (i = 0; i < tabData.length; i++) {
         if (tabData[i].searchText.includes(searchString)) {
             console.log("  found title: " + tabData[i].title)
+            let item = document.createElement("div")
+            item.innerText = tabData[i].title
+            resultsDiv.appendChild(item)
         }
 
     }
