@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <style>
             button {
-                height: 30px;
-                width: 30px;
+                height: 10px;
+                width: 10px;
                 outline: none;
             }
-            #outSpan {
-                width: 100px;
+            body {
+                /* min-width: 300px; */
+                width: 300px;
+            }
+            #searchText {
+                font-size: 16px;
+                color: rgb(85, 85, 85);
+                font-family: 'Varela Round', Arial, sans-serif;
+                min-width: 290px;
+            }
+            .item {
+                margin-top: 4px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .title {
+                font-size: 16px;
+                color: rgb(85, 85, 85);
+                font-family: 'Varela Round', Arial, sans-serif;
+                margin-left: 10px;
+                vertical-align: middle;
+                font-weight: bold;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+
+            }
+            .favicon {
+                height: 30px;
+                width: 30px;
+                vertical-align: middle;
             }
         </style>
     </head>

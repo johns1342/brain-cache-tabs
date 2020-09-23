@@ -24,7 +24,25 @@ searchText.addEventListener("keyup", function(ev) {
         if (tabData[i].searchText.includes(searchString)) {
             console.log("  found title: " + tabData[i].title)
             let item = document.createElement("div")
-            item.innerText = tabData[i].title
+            item.setAttribute("windowId", tabData[i].windowId)
+            item.setAttribute("tabId", tabData[i].tabId)
+            item.classList.add("item")
+
+            let favIcon = document.createElement("span")
+            let img = document.createElement("img")
+            if (tabData[i].favIconUrl) {
+                img.src = tabData[i].favIconUrl
+            }
+            img.classList.add("favicon")
+            favIcon.appendChild(img)
+
+            let title = document.createElement("span")
+            title.innerText = tabData[i].title
+            title.classList.add("title")
+
+            item.appendChild(favIcon)
+            item.appendChild(title)
+
             resultsDiv.appendChild(item)
         }
 

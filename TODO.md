@@ -7,8 +7,8 @@
 - [x] accept text input and do simple string searching of the json
 - [x] get a live-update display/search auto-complete working
 - [ ] add click selection brings window/tab to front
-- [ ] add nicer formatting
-- [ ] add favIcon
+- [x] add nicer formatting
+- [x] add favIcon
 
 ## v1
 

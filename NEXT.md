@@ -2,5 +2,7 @@
 
 In popup.js/html:
 
-- build nice auto complete display with favIcon
+- auto display all results before search
+- remove http/s from search
+- add highlight and click-to-navigate
 
