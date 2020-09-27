@@ -1,7 +1,4 @@
 
-let windowID = document.getElementById("windowID")
-let tabIndex = document.getElementById("tabIndex")
-
 let windowCount = document.getElementById("windowCount")
 let tabCount = document.getElementById("tabCount")
 
@@ -73,17 +70,6 @@ window.onload = function() {
     console.log("onload " + Date())
     let windowsTotal = 0
     let tabsTotal = 0
-
-    chrome.windows.getCurrent(function(window) {
-        windowID.innerText = window.id
-        chrome.tabs.query({windowId: window.id, active: true}, function(tabs) {
-            if (tabs.length == 1) {
-                tabIndex.innerText = tabs[0].index
-            } else {
-                tabIndex.innerText = tabs.length + " active tabs"
-            }
-        })
-    })
 
     chrome.windows.getAll(function(windows) {
         console.log(windows)

@@ -6,12 +6,13 @@
   - [x] walk the tabs, build json objects
 - [x] accept text input and do simple string searching of the json
 - [x] get a live-update display/search auto-complete working
-- [ ] add click selection brings window/tab to front
+- [x] add click selection brings window/tab to front
 - [x] add nicer formatting
 - [x] add favIcon
 
 ## v1
 
+- add a **gather** button to pull search results into the current window
 - add view-modes / filters at the top:
   - window hit count summary
     - single click filters by the window
