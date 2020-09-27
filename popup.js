@@ -110,7 +110,8 @@ window.onload = function() {
                         title: v.title,
                         url: v.url,
                         favIconUrl: v.favIconUrl,
-                        searchText: v.title.toLowerCase() + "||" + v.url.toLowerCase(),
+                        searchText: v.title.toLowerCase() + "||" + 
+                            v.url.toLowerCase().replace(/^https?:\/\//, ''),
                     }
                     tabData.push(item)
                     add_result(item)
