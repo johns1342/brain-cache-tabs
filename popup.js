@@ -23,7 +23,7 @@ function add_result(result) {
         console.log(event.currentTarget.getAttribute("tabId"))
         console.log(event)
         chrome.tabs.update(parseInt(tabId), {active: true})
-        chrome.windows.update(windowId, {focused: true})
+        chrome.windows.update(parseInt(windowId), {focused: true})
     })
 
     let favIcon = document.createElement("span")
@@ -110,40 +110,3 @@ window.onload = function() {
     })
     searchText.focus()
 }
-
-let changeColor = document.getElementById("changeColor")
-
-chrome.storage.sync.get("color", function(data) {
-    changeColor.style.backgroundColor = data.color
-    changeColor.setAttribute("value", data.color)
-})
-changeColor.onclick = function(element) {
-    let color = element.target.value
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.executeScript(
-            tabs[0].id,
-            {code: 'document.body.style.backgroundColor = "' + color + '";'}
-        )
-    })
-}
-
-chrome.windows.getAll(function(windows) {
-    console.log(windows)
-    let windowIDs = []
-    for (const v of Object.values(windows)) {
-        windowIDs.push(v.id)
-    }
-    console.log(windowIDs)
-    let firstID = windowIDs[0]
-    chrome.tabs.query({windowId: firstID}, function(tabs) {
-        console.log(tabs)
-        let tabIDs = []
-        for (const v of Object.values(tabs)) {
-            tabIDs.push(v.id)
-            console.log("title: " + v.title)
-            console.log("  url: " + v.url)
-            console.log("favIconUrl: " + v.favIconUrl)
-        }
-        console.log(tabIDs)
-    })
-})
