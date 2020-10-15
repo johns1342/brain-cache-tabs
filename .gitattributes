@@ -5,5 +5,5 @@ brain_cache.zip export-ignore
 .git* export-ignore
 Makefile export-ignore
 jsconfig.json export-ignore
-images/bigger-icon.xcf export-ignore
+images/*.xcf export-ignore
 images/screenshot* export-ignore
