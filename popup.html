@@ -7,6 +7,9 @@
                 /* min-width: 300px; */
                 width: 300px;
             }
+            .action {
+                border-radius: 20%;
+            }
             #searchText {
                 font-size: 16px;
                 color: rgb(85, 85, 85);
@@ -45,6 +48,9 @@
         </style>
     </head>
     <body>
+        <div>
+            <input type="image" id="gather" class="action" title="Gather result tabs to this window." alt="G" src="images/gather.png">
+        </div>
         <div id=totalCounts><span id="windowCount">wC</span> windows, <span id="tabCount">tC</span> tabs</div>
         <span id="searchSpan"><input id="searchText" type="text"></span>
         <div id="resultsDiv">

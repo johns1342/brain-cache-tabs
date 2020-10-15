@@ -1,4 +1,6 @@
 
+let currentWindowId
+let gatherButton = document.getElementById("gather")
 let windowCount = document.getElementById("windowCount")
 let tabCount = document.getElementById("tabCount")
 
@@ -8,10 +10,9 @@ let searchText = document.getElementById("searchText")
 console.log("searchText = " + searchText)
 
 let tabData = []
+let searchResults = []
 
-function add_result(result) {
-    console.log("add_result("+result+")")
-    console.log(result)
+function create_item(result) {
     let item = document.createElement("div")
     item.setAttribute("windowId", result.windowId)
     item.setAttribute("tabId", result.tabId)
@@ -42,8 +43,7 @@ function add_result(result) {
 
     item.appendChild(favIcon)
     item.appendChild(title)
-
-    resultsDiv.appendChild(item)
+    return item
 }
 
 function refresh_results(searchString) {
@@ -53,13 +53,35 @@ function refresh_results(searchString) {
     while (child = resultsDiv.lastChild) {
         resultsDiv.removeChild(child)
     }
-    for (i = 0; i < tabData.length; i++) {
+    let items = []
+    searchResults = []
+    for (i = 0, tl = tabData.length; i < tl; i++) {
         if (!searchString || tabData[i].searchText.includes(searchString)) {
             console.log("  found title: " + tabData[i].title)
-            add_result(tabData[i])
+            items.push(create_item(tabData[i]))
+            searchResults.push(tabData[i])
         }
     }
+    resultsDiv.append(...items)
 }
+
+gatherButton.addEventListener("click", function(ev) {
+    console.log("gather " + searchResults.length + "tabs")
+    tabIds = searchResults.map(_ => _.tabId)
+    tabIds = []
+    for (i = 0, srl = searchResults.length; i < srl; i++) {
+        if (searchResults[i].windowId != currentWindowId) {
+            tabIds.push(searchResults[i].tabId)
+        }
+    }
+    chrome.tabs.move(
+        tabIds,
+        {
+            windowId: currentWindowId,
+            index: -1
+        })
+    window.close()
+})
 
 searchText.addEventListener("keyup", function(ev) {
     console.log("key pressed: " + ev.key)
@@ -102,7 +124,8 @@ window.onload = function() {
                             v.url.toLowerCase().replace(/^https?:\/\//, ''),
                     }
                     tabData.push(item)
-                    add_result(item)
+                    resultsDiv.append(create_item(item))
+                    searchResults.push(item)
                 }
                 tabsTotal += tabs.length
                 tabCount.innerText = tabsTotal
@@ -112,3 +135,7 @@ window.onload = function() {
     })
     searchText.focus()
 }
+
+chrome.windows.getCurrent(function (window) {
+    currentWindowId = window.id
+})

@@ -9,10 +9,10 @@
 - [x] add click selection brings window/tab to front
 - [x] add nicer formatting
 - [x] add favIcon
+- [x] add a **gather** button to pull search results into the current window
 
 ## v1
 
-- add a **gather** button to pull search results into the current window
 - add view-modes / filters at the top:
   - window hit count summary
     - single click filters by the window
