@@ -30,6 +30,8 @@ function add_result(result) {
     let img = document.createElement("img")
     if (result.favIconUrl) {
         img.src = result.favIconUrl
+    } else if (result.url.startsWith("chrome://")) {
+        img.src = "chrome://favicon/" + result.favIconUrl
     }
     img.classList.add("favicon")
     favIcon.appendChild(img)

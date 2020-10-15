@@ -2,7 +2,7 @@
     "name": "BrainCache - Tab and Content Finder",
     "version": "0.1.0",
     "description": "BrainCache is a Chrome tab manager still in POC mode.  The github URL is https://github.com/johns1342/brain-cache-tabs.",
-    "permissions": ["tabs"],
+    "permissions": ["tabs", "chrome://favicon/"],
     "options_page": "options.html",
     "browser_action": {
         "default_popup": "popup.html"
