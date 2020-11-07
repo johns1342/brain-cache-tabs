@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/johns1342/brain-cache-tabs)
+
 # Brain Cache Chrome Extension
 
 Brain Cache is a tab finder and manipulator (eventually).  Right now it's in a POC stage to see what works and what doesn't.
