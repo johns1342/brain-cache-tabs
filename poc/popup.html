@@ -6,6 +6,7 @@
             body {
                 /* min-width: 300px; */
                 width: 300px;
+                font-family: 'Varela Round', Arial, sans-serif;
             }
             .action {
                 border-radius: 20%;
@@ -18,28 +19,51 @@
             }
             .item {
                 display: flex;
-                margin-top: 4px;
+                align-items: baseline;
+                margin: 2px;
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
+                cursor: default;
+                border-radius: 3px;
             }
             .item:hover {
-                background-color:steelblue;
+                background-color:lightblue;
             }
-            .item:hover > .title {
+            /* .item:hover > .title {
                 color: rgb(185, 185, 185);
+            } */
+            .item:hover > .more {
+                display: block;
             }
             .title {
                 font-size: 14px;
                 color: rgb(85, 85, 85);
-                font-family: 'Varela Round', Arial, sans-serif;
                 margin-left: 6px;
-                vertical-align: middle;
+                margin-right: 4px;
+                vertical-align: bottom;
                 font-weight: bold;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
 
+            }
+            .more {
+                display: none;
+                margin-left: auto;
+                /* background-color: rgb(128,128,128); */
+            }
+            .close {
+                border-radius: 8px;
+            }
+            .close:hover {
+                background-color: red;
+            }
+            .icon {
+                height: 16px;
+                width: 16px;
+                margin: 1px;
+                vertical-align: middle;
             }
             .favicon {
                 height: 16px;

@@ -49,6 +49,8 @@ function create_item(result) {
 function refresh_results(searchString) {
     console.log("searchString = " + searchString)
     console.log("!searchString = " + !searchString)
+    console.log("tabData=")
+    console.log(tabData)
     let child
     while (child = resultsDiv.lastChild) {
         resultsDiv.removeChild(child)

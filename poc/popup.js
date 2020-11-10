@@ -30,7 +30,7 @@ function create_item(result) {
         chrome.windows.update(parseInt(windowId), {focused: true})
     })
 
-    let favIcon = document.createElement("span")
+    let favIcon = document.createElement("div")
     let img = document.createElement("img")
     if (result.favIconUrl) {
         img.src = result.favIconUrl
@@ -40,12 +40,46 @@ function create_item(result) {
     img.classList.add("favicon")
     favIcon.appendChild(img)
 
-    let title = document.createElement("span")
+    let title = document.createElement("div")
     title.innerText = result.title
     title.classList.add("title")
 
+    let more = document.createElement("div")
+    more.classList.add("more")
+
+    let close = document.createElement("input")
+    close.classList.add("icon")
+    close.classList.add("close")
+    close.setAttribute("type", "image")
+    close.setAttribute("src", "images/close.svg")
+    close.setAttribute("title", "Close the tab.")
+    more.appendChild(close)
+
+    let info = document.createElement("input")
+    info.classList.add("icon")
+    info.classList.add("info")
+    info.setAttribute("type", "image")
+    info.setAttribute("src", "images/info.svg")
+    more.appendChild(info)
+
+    let gather1 = document.createElement("input")
+    gather1.classList.add("icon")
+    gather1.classList.add("info")
+    gather1.setAttribute("type", "image")
+    gather1.setAttribute("src", "images/gather_one.svg")
+    close.setAttribute("title", "Bring the tab to this window.")
+    more.appendChild(gather1)
+
+    let thumb = document.createElement("input")
+    thumb.classList.add("icon")
+    thumb.classList.add("info")
+    thumb.setAttribute("type", "image")
+    thumb.setAttribute("src", "images/thumbnail.svg")
+    more.appendChild(thumb)
+
     item.appendChild(favIcon)
     item.appendChild(title)
+    item.appendChild(more)
     return item
 }
 
